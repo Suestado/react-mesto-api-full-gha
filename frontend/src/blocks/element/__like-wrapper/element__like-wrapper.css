@@ -1,0 +1,10 @@
+.element__like-wrapper {
+  margin: 0;
+  padding: 0;
+  min-width: 22px;
+  height: 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

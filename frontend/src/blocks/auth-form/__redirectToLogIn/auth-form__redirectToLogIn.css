@@ -1,0 +1,10 @@
+.auth-form__redirectToLogIn {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: ease-in-out .3s;
+}
+
+.auth-form__redirectToLogIn:hover {
+  opacity: .6;
+}

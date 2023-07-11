@@ -1,0 +1,9 @@
+.header__userMail {
+  flex-basis: fit-content;
+  margin: 0 0 0 24px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+}

@@ -1,0 +1,6 @@
+.element__group-name {
+  display: grid;
+  grid-template-columns: 1fr minmax(32px, max-content);
+  grid-gap: 30px;
+  margin: 25px 15px 25px 20px;
+}

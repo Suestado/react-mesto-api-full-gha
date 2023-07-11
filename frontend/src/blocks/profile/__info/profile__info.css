@@ -1,0 +1,17 @@
+.profile__info {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+@media screen and (max-width: 618px) {
+  .profile__info {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: 80%;
+    justify-self: center;
+    margin-bottom: 32px;
+    padding-left: 40px;
+  }
+}
