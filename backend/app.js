@@ -7,6 +7,7 @@ const cors = require('cors');
 const router = require('./routes/router');
 const errorsGlobalHandler = require('./middlewares/errorsGlobalHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { corsOptions } = require('./utils/constants');
 
 const { PORT = 4000 } = process.env;
 const app = express();
@@ -16,7 +17,7 @@ mongooseConnection.on('error', (err) => console.log(`Ошибка подключ
 mongooseConnection.once('open', () => console.log('Подключение к базе данных установлено'));
 
 app.use(cookieParser());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(requestLogger);
