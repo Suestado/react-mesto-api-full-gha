@@ -1,10 +1,13 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { CastError, ValidationError } = require('mongoose').MongooseError;
 const BadRequest = require('../utils/errors/BadRequest');
 const NotFound = require('../utils/errors/NotFound');
 const ConflictRequest = require('../utils/errors/ConflictRequest');
-const SECRET_KEY = require('../utils/constants');
+const DEV_SECRET_KEY = require('../utils/constants');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const User = require('../models/users');
 const {
@@ -29,7 +32,7 @@ const createUser = (req, res, next) => {
       },
     ))
     .then((user) => {
-      res.status(statusCreated).send({ data: user });
+      res.status(statusCreated).send(user);
     })
     .catch((err) => {
       if (err.errors?.email?.kind === 'unique') {
@@ -49,7 +52,7 @@ const logIn = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        `${SECRET_KEY}`,
+        NODE_ENV === 'production' ? `${JWT_SECRET}` : `${DEV_SECRET_KEY}`,
         { expiresIn: 3600 * 24 * 7 },
       );
       res.cookie(
@@ -58,6 +61,7 @@ const logIn = (req, res, next) => {
         {
           maxAge: 3600 * 24 * 7,
           httpOnly: true,
+          sameSite: true,
         },
       );
       res.status(statusOk).send({ data: user });
@@ -65,6 +69,10 @@ const logIn = (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+};
+
+const logOut = (req, res) => {
+  res.status(200).clearCookie('jwt').send({ message: 'logOut прошел успешно' });
 };
 
 const getUsers = (req, res, next) => {
@@ -83,7 +91,7 @@ function findUserById(res, userId, next) {
       if (!user) {
         throw new NotFound('Пользователь не найден');
       } else {
-        res.status(statusOk).send({ data: user });
+        res.status(statusOk).send(user);
       }
     })
     .catch((err) => {
@@ -122,7 +130,7 @@ function updateUserInfo(req, res, userId, newData, next) {
     },
   )
     .then((user) => {
-      res.status(statusModified).send({ data: user });
+      res.status(statusModified).send(user);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {
@@ -159,6 +167,7 @@ const changeUserAvatar = changeUserAvatarWrapper(updateUserInfo);
 
 module.exports = {
   logIn,
+  logOut,
   getUserMe,
   getUsers,
   getParticularUser,

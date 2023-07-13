@@ -14,7 +14,7 @@ import InfoToolTip from './InfoTooltip.js';
 import Login from './Login.js';
 import Register from './Register.js';
 import ProtectedRouteElement from './ProtectedRoute.js';
-import { authorization, getToken, registration } from './Auth.js';
+import { authorization, getToken, registration, logOut } from './Auth.js';
 
 
 function App() {
@@ -34,22 +34,26 @@ function App() {
   const [isRegistered, setIsRegistered] = useState(null);
 
   useEffect(() => {
-    Api.getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.log(`Данные пользователя не могут быть загружены с сервера: Error: ${err}`);
-      });
-  }, []);
+    if (isLoggedIn === true) {
+      Api.getUserInfo()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((err) => {
+          console.log(`Данные пользователя не могут быть загружены с сервера: Error: ${err}`);
+        });
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
-    Api.getInitialCards()
-      .then((data) => setCards(data))
-      .catch((err) => {
-        console.log(`Стартовые карточки не могут быть загружены с сервера: Error: ${err}`);
-      });
-  }, []);
+    if (isLoggedIn === true) {
+      Api.getInitialCards()
+        .then((data) => setCards(data))
+        .catch((err) => {
+          console.log(`Стартовые карточки не могут быть загружены с сервера: Error: ${err}`);
+        });
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     checkJWTToken();
@@ -65,7 +69,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(user => user._id === currentUser._id);
+    const isLiked = card.likes.some(user => user === currentUser._id);
 
     Api.uploadLikeStatus(isLiked, card._id)
       .then((newCard) => setCards((cards) => cards.map((item) => item._id === card._id ? newCard : item)))
@@ -114,7 +118,7 @@ function App() {
   }
 
   function handleOverlayClose(evt) {
-    if(evt.target.classList.contains('popup')) {
+    if (evt.target.classList.contains('popup')) {
       closeAllPopups();
     }
   }
@@ -135,23 +139,31 @@ function App() {
   }
 
   function checkJWTToken() {
-    if(localStorage.getItem('jwtToken')) {
-      const jwt = localStorage.getItem('jwtToken');
-
-      getToken(jwt)
-        .then((data) => {
-          if(data.data._id && data.data.email) {
-            setIsLoggedIn(true);
-            navigate('/', { replace: true });
-          }
-        });
-    }
+    getToken()
+      .then((data) => {
+        if (data._id && data.email) {
+          setIsLoggedIn(true);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log(`Пользователь не авторизован. Пройдите авторизацию заново: ${err}`);
+        setIsLoggedIn(false);
+      });
   }
 
   function onLeavePage() {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('userEmail');
-    setIsLoggedIn(false);
+    logOut()
+      .then((data) => {
+        console.log('дошло в обработку промиса logOut');
+        if (data) {
+          localStorage.removeItem('userEmail');
+          setIsLoggedIn(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (<CurrentUserContext.Provider value={currentUser}>

@@ -7,11 +7,10 @@ function Login({ onSubmit, setIsLoggedIn }) {
   function handleSubmitForm(email, password) {
     onSubmit(email, password)
       .then((data) => {
-        if(data.token) {
+        if(data) {
           setIsLoggedIn(true);
           navigate('/', { replace: true });
           localStorage.setItem('userEmail', email);
-          localStorage.setItem('jwtToken', data.token);
         }
       });
   }

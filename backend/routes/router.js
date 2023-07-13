@@ -8,6 +8,7 @@ const validateUserUpdateJoi = require('../middlewares/validateUserUpdateJoi');
 
 const {
   logIn,
+  logOut,
   getUserMe,
   getUsers,
   getParticularUser,
@@ -40,6 +41,8 @@ router.post('/cards', validateCardDataJoi, createCard);
 router.delete('/cards/:cardId', validateCardGetByIDJoi, deleteCard);
 router.put('/cards/:cardId/likes', validateCardGetByIDJoi, setLike);
 router.delete('/cards/:cardId/likes', validateCardGetByIDJoi, deleteLike);
+
+router.get('/logout', logOut);
 
 router.use('*', badRoute);
 

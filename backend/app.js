@@ -1,12 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const { connect: mongooseConnect, connection: mongooseConnection } = require('mongoose');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const router = require('./routes/router');
 const errorsGlobalHandler = require('./middlewares/errorsGlobalHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 const app = express();
 
 mongooseConnect('mongodb://localhost:27017/mestodb');
@@ -14,6 +16,8 @@ mongooseConnection.on('error', (err) => console.log(`Ошибка подключ
 mongooseConnection.once('open', () => console.log('Подключение к базе данных установлено'));
 
 app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+
 app.use(express.json());
 app.use(requestLogger);
 app.use(router);

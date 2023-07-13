@@ -9,6 +9,7 @@ class ApiBaseClass {
         method: method,
         headers: headers,
         body: body,
+        credentials: 'include',
       })
         .then(this._checkResponse);
     };
@@ -89,7 +90,7 @@ class ApiBaseClass {
 }
 
 const Api = new ApiBaseClass({
-  baseURL: 'https://nomoreparties.co/v1/cohort-63',
+  baseURL: 'http://localhost:4000',
   headers: {
     'authorization': '9d6e9065-bec5-40dc-8c9b-a22a23e762e4',
     'Content-Type': 'application/json',

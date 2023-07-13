@@ -8,22 +8,21 @@ function AddPlacePopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
     register,
     formState: {
       errors,
-      isValid
+      isValid,
     },
     handleSubmit,
     watch,
-    reset
+    reset,
   } = useForm({
-    mode: 'onChange'
+    mode: 'onChange',
   });
 
   useEffect(() => {
-    reset()
+    reset();
   }, [isOpen]);
 
-
   function onSubmit() {
-    onSubmitPopup(watch("name"), watch("link"))
+    onSubmitPopup(watch('name'), watch('link'));
   }
 
   return (
@@ -47,21 +46,21 @@ function AddPlacePopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
             id="photoAdd-input-text"
             placeholder="Название"
             {...register(
-              "name",
+              'name',
               {
-                required: "Поле обязательно для заполнения",
+                required: 'Поле обязательно для заполнения',
                 maxLength: {
                   value: 40,
-                  message: "Текст должен содержать не более 40 символов"
+                  message: 'Текст должен содержать не более 40 символов',
                 },
                 minLength: {
                   value: 2,
-                  message: "Текст должен содержать не менее 2-х символов"
+                  message: 'Текст должен содержать не менее 2-х символов',
                 },
-              }
+              },
             )}
           />
-          <span className={`popup__input-error photoAdd-input-text-error ${errors?.name && "popup__input-error_active"}`}>
+          <span className={`popup__input-error photoAdd-input-text-error ${errors?.name && 'popup__input-error_active'}`}>
             {errors?.name?.message}
           </span>
         </label>
@@ -72,16 +71,16 @@ function AddPlacePopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
             id="photoAdd-input-url"
             placeholder="Ссылка на картинку"
             {...register(
-              "link",
+              'link',
               {
-                required: "Поле обязательно для заполнения",
+                required: 'Поле обязательно для заполнения',
                 minLength: {
                   value: 2,
-                  message: "Текст должен содержать не менее 2-х символов"
+                  message: 'Текст должен содержать не менее 2-х символов',
                 },
-              }
+              },
             )}/>
-          <span className={`popup__input-error photoAdd-input-url-error  ${errors?.link && "popup__input-error_active"}`}>
+          <span className={`popup__input-error photoAdd-input-url-error  ${errors?.link && 'popup__input-error_active'}`}>
             {errors?.link?.message}
           </span>
         </label>
