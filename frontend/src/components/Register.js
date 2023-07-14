@@ -7,7 +7,7 @@ function Register({ onSubmit, setIsRegistered, setIsInfoToolTipOpen }) {
   function handleSubmitForm(email, password) {
     onSubmit(email, password)
       .then((data) => {
-        if(data.data.email && data.data._id) {
+        if(data.email && data._id) {
           setIsRegistered(true);
           setIsInfoToolTipOpen(true);
           navigate('/sign-up', { replace: true });
