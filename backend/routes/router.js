@@ -25,6 +25,12 @@ const {
 } = require('../controllers/cards');
 const badRoute = require('../controllers/404page');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.post('/signin', validateUserDataJoi, logIn);
 router.post('/signup', validateUserDataJoi, createUser);
 
