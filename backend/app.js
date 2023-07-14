@@ -12,7 +12,7 @@ const { corsOptions } = require('./utils/constants');
 const { PORT = 4000 } = process.env;
 const app = express();
 
-mongooseConnect('mongodb://127.0.0.1:27017/mestodb');
+mongooseConnect('mongodb://127.0.0.1/mestodb');
 mongooseConnection.on('error', (err) => console.log(`Ошибка подключения к базе данных: ${err}`));
 mongooseConnection.once('open', () => console.log('Подключение к базе данных установлено'));
 
