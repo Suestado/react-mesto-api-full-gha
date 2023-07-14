@@ -1,6 +1,9 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = require('../utils/constants');
+const DEV_SECRET_KEY = require('../utils/constants');
 const StatusDenied = require('../utils/errors/StatusDenied');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -11,7 +14,7 @@ module.exports = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, `${SECRET_KEY}`);
+    payload = jwt.verify(token, NODE_ENV === 'production' ? `${JWT_SECRET}` : `${DEV_SECRET_KEY}`);
   } catch (err) {
     next(new StatusDenied('Необходима авторизация'));
   }
