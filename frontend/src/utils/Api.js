@@ -90,7 +90,7 @@ class ApiBaseClass {
 }
 
 const Api = new ApiBaseClass({
-  baseURL: 'http://localhost:4000',
+  baseURL: 'http://api.suestado.nomoredomains.work',
   headers: {
     'authorization': '9d6e9065-bec5-40dc-8c9b-a22a23e762e4',
     'Content-Type': 'application/json',
