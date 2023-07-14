@@ -155,7 +155,6 @@ function App() {
   function onLeavePage() {
     logOut()
       .then((data) => {
-        console.log('дошло в обработку промиса logOut');
         if (data) {
           localStorage.removeItem('userEmail');
           setIsLoggedIn(false);
