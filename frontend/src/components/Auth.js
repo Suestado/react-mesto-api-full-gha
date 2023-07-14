@@ -1,4 +1,4 @@
-const baseURL = 'http://suestado.nomoredomains.work';
+const baseURL = 'http://api.suestado.nomoredomains.work';
 
 function checkResponse(res) {
   if (res.ok) {

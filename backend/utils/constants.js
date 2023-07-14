@@ -23,17 +23,12 @@ const DEV_SECRET_KEY = '31bf9fcad3e346819659afb7e1270dc7161985a7b6e7c85e6246b389
 //   'http://api.suestado.nomoredomains.work',
 //   'https://api.suestado.nomoredomains.work',
 // ];
-//
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true,
-// };
+
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 module.exports = {
   statusOk,
@@ -49,5 +44,5 @@ module.exports = {
   linkRegExp,
   urlRegExp,
   emailRegExp,
-  // corsOptions,
+  corsOptions,
 };
