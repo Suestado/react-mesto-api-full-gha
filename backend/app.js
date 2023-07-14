@@ -7,7 +7,6 @@ const cors = require('cors');
 const router = require('./routes/router');
 const errorsGlobalHandler = require('./middlewares/errorsGlobalHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const { corsOptions } = require('./utils/constants');
 
 const { PORT = 4000 } = process.env;
 const app = express();
