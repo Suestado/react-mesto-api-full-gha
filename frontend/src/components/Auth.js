@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:4000';
+const baseURL = 'http://suestado.nomoredomains.work';
 
 function checkResponse(res) {
   if (res.ok) {
