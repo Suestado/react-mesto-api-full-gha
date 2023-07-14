@@ -20,6 +20,8 @@ const whitelist = [
   'http://localhost:3000',
   'http://suestado.nomoredomains.work',
   'https://suestado.nomoredomains.work',
+  'http://api.suestado.nomoredomains.work',
+  'https://api.suestado.nomoredomains.work',
 ];
 
 const corsOptions = {
