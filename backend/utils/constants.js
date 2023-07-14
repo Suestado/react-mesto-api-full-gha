@@ -16,24 +16,24 @@ const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}$/;
 
 const DEV_SECRET_KEY = '31bf9fcad3e346819659afb7e1270dc7161985a7b6e7c85e6246b389e33754ad';
 
-const whitelist = [
-  'http://localhost:3000',
-  'http://suestado.nomoredomains.work',
-  'https://suestado.nomoredomains.work',
-  'http://api.suestado.nomoredomains.work',
-  'https://api.suestado.nomoredomains.work',
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
+// const whitelist = [
+//   'http://localhost:3000',
+//   'http://suestado.nomoredomains.work',
+//   'https://suestado.nomoredomains.work',
+//   'http://api.suestado.nomoredomains.work',
+//   'https://api.suestado.nomoredomains.work',
+// ];
+//
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true,
+// };
 
 module.exports = {
   statusOk,
@@ -49,5 +49,5 @@ module.exports = {
   linkRegExp,
   urlRegExp,
   emailRegExp,
-  corsOptions,
+  // corsOptions,
 };
