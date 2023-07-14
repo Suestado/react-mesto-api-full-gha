@@ -18,7 +18,7 @@ mongooseConnection.on('error', (err) => console.log(`Ошибка подключ
 mongooseConnection.once('open', () => console.log('Подключение к базе данных установлено'));
 
 app.use(cookieParser());
-app.use(cors({ origin: 'http://suestado.nomoredomains.work', credentials: true }));
+app.use(cors({ origin: 'https://suestado.nomoredomains.work', credentials: true }));
 
 app.use(express.json());
 app.use(requestLogger);
