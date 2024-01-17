@@ -1,9 +1,9 @@
-import Popup from './Popup.js';
+import Popup from './Popup.jsx';
 import union from '../images/union.svg';
 import unionFailed from '../images/unionFailed.svg';
 
 function InfoToolTip(props) {
-  
+
   return (
     <Popup
       isOpen={props.isOpen}

@@ -1,16 +1,63 @@
-[![Статус тестов](../../actions/workflows/tests.yml/badge.svg)](../../actions/workflows/tests.yml)
+# Intro
 
-# react-mesto-api-full
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
-  
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
+The repository for the picture posting application for the Front-end developer course, including the front-end on React and the backend on Node.js parts with the following features:
 
-Адрес репозитория: https://github.com/Suestado/react-mesto-api-full-gha
+- user authorization and registration
+- user info changing
+- adding new pictures with description
+- like cards
 
-## Ссылки на проект
+___
+# How to start
 
-IP-адрес 51.250.77.147
+_FYI - as server started localy, there won't be any pictures in the app. To se the functionality Add your pictures with URL & name_
 
-Frontend https://suestado.nomoredomains.work/
+### To run the application locally, you need to download repository:
+- https://github.com/Suestado/react-mesto-api-full-gha
+<br>Repository has two folders for _Frontend_ & _Backend_
 
-Backend https://api.suestado.nomoredomains.work/
+
+
+### Start Backend server locally.
+Open Backend folder & run server.
+<br>Server should start on port 4000 automatically.
+<br>You should have Mongo.db installed on your PC.
+```angular2html
+npm start
+```
+Positive result:
+```angular2html
+Сервер запущен на порту 4000
+Подключение к базе данных установлено
+```
+
+### Start Frontend locally.
+To avoid CORS errors an App have to be opened on PORT 3000 (http://localhost:300/)
+```angular2html
+npm start
+```
+Positive result:
+```angular2html
+You can now view movies-explorer-frontend in the browser.
+
+Local:            http://localhost:3000
+On Your Network:  http://######
+
+```
+___
+# Used technologies:
+* Frontend
+    * React
+        * React
+        * React-router
+        * React-hook-form
+    * HTML5
+    * CSS
+    * Grid/flex layout
+    * Semantic
+
+* Backend
+    * Node.js
+    * Express.js
+    * Mongoose
+    * nginx

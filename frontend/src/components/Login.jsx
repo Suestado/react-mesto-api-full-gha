@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import AuthForm from './AuthForm.js';
+import AuthForm from './AuthForm.jsx';
 
 function Login({ onSubmit, setIsLoggedIn }) {
   const navigate = useNavigate();

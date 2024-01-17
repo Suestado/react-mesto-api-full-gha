@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react';
-import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.jsx';
 
 function EditAvatarPopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
 

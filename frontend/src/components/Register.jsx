@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import AuthForm from './AuthForm.js';
+import AuthForm from './AuthForm.jsx';
 
 function Register({ onSubmit, setIsRegistered, setIsInfoToolTipOpen }) {
   const navigate = useNavigate();

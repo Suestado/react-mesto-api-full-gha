@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.jsx';
 
 function AddPlacePopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
 

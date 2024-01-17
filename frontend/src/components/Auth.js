@@ -1,6 +1,7 @@
-const baseURL = 'https://api.suestado.nomoredomains.work';
+// const baseURL = 'https://api.suestado.nomoredomains.work';
+const baseURL = 'http://localhost:4000';
 
-function checkResponse(res) {
+  function checkResponse(res) {
   if (res.ok) {
     return res.json();
   } else {

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../context/CurrentUserContext.js';
 import { useForm } from 'react-hook-form';
-import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.jsx';
 
 function EditProfilePopup({ isOpen, onClose, onSubmitPopup, isUploading }) {
 

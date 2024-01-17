@@ -2,7 +2,6 @@
   background-color: black;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  min-height: 100vh;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,4 +9,10 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

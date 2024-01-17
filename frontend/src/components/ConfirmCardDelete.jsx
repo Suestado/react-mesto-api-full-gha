@@ -1,4 +1,4 @@
-import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.jsx';
 
 function ConfirmCardDelete({ isOpen, onClose, onSubmitPopup, isUploading, onOverlayClose }) {
 
